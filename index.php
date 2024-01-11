@@ -3,42 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Criée</title>
+    <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
     <?php
         include "models/DatabaseConnection.php";
 
         include "controllers/LoginController.php";
+        include "controllers/ComptableController.php";
 
         $action = isset($_GET["action"]) ? $_GET["action"] : "home";
 
         $controller = null;
 
         switch ($action) {
-            case "show_login":
-                $controller = new LoginController();
-                $controller->show_login();
-                break;
             case "login":
                 $controller = new LoginController();
-                $user = $controller->login();
+                $controller->login();
 
-                if (!strcmp($user->get_role(), "Comptable")) {
-                    header("Location: index.php?action=comptable");
-                    exit();
-                } elseif (!strcmp($user->get_role(), "Directeur des ventes")) {
-                    header("Location: index.php?action=directeur_ventes");
-                    exit();
-                } else {
-                    header("Location: index.php?action=show_login");
-                    exit();
-                }
+                if (isset($_SESSION["username"]) && isset($_SESSION["firstname"]) && isset($_SESSION["lastname"]) && isset($_SESSION["role"]))
+                    header("Location: index.php?action=test");
                 break;
-                case "comptable":
-                    break;
-                case "directeur_ventes":
-                    break;
+            case "test":
+                include "views/comptable/v_home_comptable.php";
+                break;
+            case "listeLotV":
+                $controller = new ComptableController();
+                $controller->routeListeLotV();
+                include "views/comptable/v_listeLotVendu.php";
+                break;
             default:
                 include "views/home/v_home.php";
                 break;

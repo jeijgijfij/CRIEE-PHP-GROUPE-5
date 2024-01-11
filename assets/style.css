@@ -1,1 +1,11 @@
-/* */
+body {
+    background-color: #E6E6DD;
+    font: 1.2rem "Lazord", sans-serif;
+}
+
+.login-form {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}

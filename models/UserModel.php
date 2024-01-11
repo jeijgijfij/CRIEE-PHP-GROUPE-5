@@ -1,11 +1,6 @@
 <?php
     class UserModel {
-        public $_username = null;
-        public $_firstname = null;
-        public $_lastname = null;
-        public $_role = null;
-
-        public function fill($username, $password) {
+        public function authenticate($username, $password) {
             $connection = DatabaseConnection::connect();
 
             $query = "SELECT u.nomUtilisateur, u.nom, u.prenom, r.nomRole FROM utilisateurs AS u INNER JOIN roles AS r ON u.idRole = r.id WHERE u.nomUtilisateur = ? AND u.motdepasse = ?";
@@ -15,11 +10,14 @@
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                $this->_username = $result["nomUtilisateur"];
-                $this->_firstname = $result["prenom"];
-                $this->_lastname = $result["nom"];
-                $this->_role = $result["nomRole"];
+                session_start();
+                $_SESSION["username"] = $result["nomUtilisateur"];
+                $_SESSION["firstname"] = $result["prenom"];
+                $_SESSION["lastname"] = $result["nom"];
+                $_SESSION["role"] = $result["nomRole"];
+                return true;
             }
+            return false;
         }
 
         function set_username($_username) {

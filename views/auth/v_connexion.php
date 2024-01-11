@@ -8,6 +8,11 @@
 <body>
     <div class="login-form">
         <h1>Connexion</h1>
+
+        <?php if ($error === false) { ?>
+            <p>Erreur</p>
+        <?php } ?>
+
         <form action="index.php?action=login" method="post">
             <div class="field">
                 <label for="username">Nom d'utilisateur</label>
