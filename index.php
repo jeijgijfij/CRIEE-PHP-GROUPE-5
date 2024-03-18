@@ -30,7 +30,6 @@
             case "listeLotV":
                 $controller = new ComptableController();
                 $controller->routeListeLotV();
-                include "views/comptable/v_listeLotVendu.php";
                 break;
             default:
                 include "views/home/v_home.php";
