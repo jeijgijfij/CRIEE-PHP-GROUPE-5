@@ -31,6 +31,12 @@
                 $mail->Body = "Bonjour,\nVous retrouverez votre facture en pièce jointe, merci de votre achat.";
 
                 $mail->send();
+                $connection = DatabaseConnection::connect();
+
+                $query = "INSERT INTO facture (montantHT, dateFacture) VALUES (?, ?)";
+                $stmt = $connection->prepare($query);
+                $stmt->execute([$montantHT, $dateFacture]);
+
                 return 0;
             } catch (Exception $e) {
                 return 1;
