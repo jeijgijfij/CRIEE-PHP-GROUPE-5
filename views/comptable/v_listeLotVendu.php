@@ -7,16 +7,17 @@
     </head>
 
     <body>
-        <section>
-            <table>
-                <?php while ($donnees = $resultInfos->fetch(PDO::FETCH_ASSOC)) { ?>
-                <tr>
-                    <td> <?php echo htmlspecialchars($donnees['id']); ?> </td>
-                    <td> <?php echo htmlspecialchars($donnees['nom']); ?> </td>
-                    <td> <?php echo htmlspecialchars($donnees['prenom']); ?> </td>
-                </tr>
-                <?php } $resultInfos->closeCursor(); ?>
-            </table>
-        </section>
+    <section>
+        <table class="custom-table">
+            <?php while ($donnees = $resultInfos->fetch(PDO::FETCH_ASSOC)) { ?>
+            <tr class="table-row">
+                <td class="table-cell"> <?php echo htmlspecialchars($donnees['id']); ?> </td>
+                <td class="table-cell"> <?php echo htmlspecialchars($donnees['nom']); ?> </td>
+                <td class="table-cell"> <?php echo htmlspecialchars($donnees['prenom']); ?> </td>
+                <td class="table-cell"> <button class="custom-button">Envoyer la facture</button> </td>
+            </tr>
+            <?php } $resultInfos->closeCursor(); ?>
+        </table>
+    </section>
     </body>
 </html>

@@ -1,11 +1,22 @@
-body {
-    background-color: #E6E6DD;
-    font: 1.2rem "Lazord", sans-serif;
+/* ------------------ */
+
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.login-form {
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.table-row {
+    border: 1px solid #dddddd;
+}
+
+.table-cell {
+    padding: 8px;
+}
+
+.custom-table .table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-button {
+    float: right;
 }

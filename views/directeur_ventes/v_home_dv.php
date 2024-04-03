@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include "views/v_header.php"; ?>
-    <p>FUTURE PAGE D'ACCUEIL COMPTABLE</p>
+    <p>FUTURE PAGE D'ACCUEIL DIRECTEUR DES VENTES</p>
 </body>
 </html>
