@@ -1,0 +1,22 @@
+/* ------------------ */
+
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-row {
+    border: 1px solid #dddddd;
+}
+
+.table-cell {
+    padding: 8px;
+}
+
+.custom-table .table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-button {
+    float: right;
+}
