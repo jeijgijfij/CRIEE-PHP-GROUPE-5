@@ -38,7 +38,6 @@
                 </tr>
                 <?php
                     if (isset($_POST["Facture"])) {
-                        echo $_POST["Facture"];
                         facture_infos($_POST["Facture"]);
                     }
                     if (isset($_POST["MailFacture"])) {

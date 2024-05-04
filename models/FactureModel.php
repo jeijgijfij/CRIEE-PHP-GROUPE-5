@@ -26,7 +26,13 @@
         public function getDestinataire($id) {
             $connection = DatabaseConnection::connect();
 
-            $query = "SELECT acheteur.mail FROM acheteur WHERE acheteur.id = ?";
+            $query = "SELECT idAcheteur FROM lot WHERE idFacture = ?";
+            $stmt = $connection->prepare($query);
+            $stmt->execute([$id]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $acheteur_id = $result["idAcheteur"];
+
+            $query = "SELECT mail FROM acheteur WHERE id = ?";
             $stmt = $connection->prepare($query);
             $stmt->execute([$id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);

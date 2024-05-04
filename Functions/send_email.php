@@ -12,8 +12,8 @@ function sendEmail($destinataire, $id) {
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
-    $mail->Username = ""; // ADRESSE MAIL
-    $mail->Password = ""; // MOT DE PASSE D'APPLICATION (https://myaccount.google.com/apppasswords)
+    $mail->Username = "crieephptest@gmail.com"; // ADRESSE MAIL
+    $mail->Password = "zshkrgjpbnrgacyb"; // MOT DE PASSE D'APPLICATION (https://myaccount.google.com/apppasswords)
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -27,12 +27,11 @@ function sendEmail($destinataire, $id) {
     } else {
         echo "Mail envoyé avec succès";
         $dateFacture = date("Y-m-d");
-        $montantHT = 0;
         $connection = DatabaseConnection::connect();
 
-        $query = "INSERT INTO facture (montantHT, dateFacture) VALUES (?, ?)";
+        $query = "UPDATE facture SET dateFacture = ? WHERE id = ?";
         $stmt = $connection->prepare($query);
-        $stmt->execute([$montantHT, $dateFacture]);
+        $stmt->execute([$dateFacture, $id]);
     }
 }
 
